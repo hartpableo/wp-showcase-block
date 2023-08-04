@@ -4,11 +4,28 @@
   "name": "create-block/hart-showcase-block",
   "version": "0.1.0",
   "title": "Hart Showcase Block",
-  "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "category": "design",
+  "icon": "cover-image",
+  "description": "Custom Lightweight and Flexible Showcase Block.",
   "supports": {
     "html": false
+  },
+  "attributes": {
+    "blockID": {
+      "type": "string"
+    },
+    "imgSrc": {
+      "type": "string"
+    },
+    "imgAlt": {
+      "type": "string"
+    },
+    "imgSrcset": {
+      "type": "string"
+    },
+    "imgSizes": {
+      "type": "string"
+    }
   },
   "textdomain": "hart-showcase-block",
   "editorScript": "file:./index.js",
