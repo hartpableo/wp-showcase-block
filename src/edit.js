@@ -65,7 +65,7 @@ export default function Edit(props) {
 							)}
 						/>
 				</PanelBody>
-				<PanelBody title="Headline Tag" initialOpen={ false }>
+				<PanelBody title="Headline Tag" initialOpen={ true }>
 					<PanelRow>
 						<SelectControl
 							label="Tag"
