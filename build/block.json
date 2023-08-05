@@ -3,12 +3,16 @@
   "apiVersion": 3,
   "name": "create-block/hart-showcase-block",
   "version": "0.1.0",
-  "title": "Hart Showcase Block",
+  "title": "Custom Showcase Block",
   "category": "design",
   "icon": "cover-image",
   "description": "Custom Lightweight and Flexible Showcase Block.",
   "supports": {
-    "html": false
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "attributes": {
     "blockID": {
@@ -24,6 +28,21 @@
       "type": "string"
     },
     "imgSizes": {
+      "type": "string"
+    },
+    "headline": {
+      "type": "string",
+      "default": "Hello World!"
+    },
+    "subHeadline": {
+      "type": "string",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit"
+    },
+    "headlineTag": {
+      "type": "string",
+      "default": "p"
+    },
+    "contentPosition": {
       "type": "string"
     }
   },

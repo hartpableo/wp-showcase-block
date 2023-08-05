@@ -1,24 +1,25 @@
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {WPElement} Element to render.
- */
-export default function save() {
+export default function save(props) {
+	const { attributes } = props;
+	const { blockID, imgSrc, imgAlt, imgSrcset, imgSizes, headline, subHeadline, contentPosition, headlineTag } = attributes;
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Hart Showcase Block – hello from the saved content!' }
-		</p>
+		<section { ...useBlockProps.save({
+			id: blockID,
+			className: `hp-showcase-block`
+		}) }>
+			<div class="container">
+				<div class="hp-custom-showcase-block__info">
+					<RichText.Content
+						tagName={ headlineTag }
+						value={ headline }
+					/>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi</p>
+					<a href="#">Learn More</a>
+				</div>
+				{/* <img src="showcase-sample.jpg" alt="" srcset="" sizes="" loading="lazy"> */}
+			</div>
+		</section>
 	);
 }
