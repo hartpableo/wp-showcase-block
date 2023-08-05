@@ -67,8 +67,11 @@ function Edit(props) {
   } = props;
   const {
     blockID,
+    imgID,
     imgSrc,
     imgAlt,
+    imgWidth,
+    imgHeight,
     imgSrcset,
     imgSizes,
     headline,
@@ -79,11 +82,52 @@ function Edit(props) {
   setAttributes({
     blockID: !blockID ? clientId : blockID
   });
+  const onSelectBgImage = img => {
+    setAttributes({
+      imgID: img.id,
+      imgSrc: img.url,
+      imgAlt: img.alt || 'Background Image'
+      // imgWidth: img.width,
+      // imgHeight: img.height
+    });
+  };
+
+  const onRemoveImage = () => {
+    setAttributes({
+      imgID: null,
+      imgSrc: "https://placehold.co/2000x900",
+      imgAlt: null
+      // imgSrcset: null,
+      // imgSizes: null
+    });
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Background Image",
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, "test")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imgSrc,
+    alt: imgAlt,
+    srcset: "",
+    sizes: "",
+    loading: "lazy"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: onSelectBgImage,
+    allowedTypes: ['image'],
+    value: imgID,
+    render: ({
+      open
+    }) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      className: `hp-custom-btn ${!imgID ? 'editing' : 'preview'}`,
+      onClick: open
+    }, !imgID && 'Set Image', !!imgID && imgSrc && 'Change Image'), !!imgID && imgSrc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      className: "hp-custom-btn hp-custom-delete-btn",
+      isLink: true,
+      isDestructive: true,
+      onClick: onRemoveImage
+    }, "Delete Image"))
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Headline Tag",
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
@@ -117,7 +161,10 @@ function Edit(props) {
       });
     },
     __nextHasNoMarginBottom: true
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: "Headline Icon",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, "icon upload"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       id: blockID,
       className: `hp-showcase-block`
@@ -134,7 +181,13 @@ function Edit(props) {
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#"
-  }, "Learn More")))));
+  }, "Learn More")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imgSrc,
+    alt: imgAlt,
+    srcset: "",
+    sizes: "",
+    loading: "lazy"
+  }))));
 }
 
 /***/ }),
@@ -238,7 +291,13 @@ function save(props) {
     value: headline
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#"
-  }, "Learn More"))));
+  }, "Learn More")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imgSrc,
+    alt: imgAlt,
+    srcset: "",
+    sizes: "",
+    loading: "lazy"
+  })));
 }
 
 /***/ }),
@@ -333,7 +392,7 @@ module.exports = window["wp"]["primitives"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false,"spacing":{"margin":true,"padding":true}},"attributes":{"blockID":{"type":"string"},"imgSrc":{"type":"string"},"imgAlt":{"type":"string"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false,"spacing":{"margin":true,"padding":true}},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"string"},"imgHeight":{"type":"string"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

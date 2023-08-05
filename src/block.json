@@ -18,10 +18,20 @@
 		"blockID": {
 			"type": "string"
 		},
+		"imgID": {
+			"type": "number"
+		},
 		"imgSrc": {
-			"type": "string"
+			"type": "string",
+			"default": "https://placehold.co/2000x900"
 		},
 		"imgAlt": {
+			"type": "string"
+		},
+		"imgWidth": {
+			"type": "string"
+		},
+		"imgHeight": {
 			"type": "string"
 		},
 		"imgSrcset": {

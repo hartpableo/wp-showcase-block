@@ -1,23 +1,69 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, SelectControl } from '@wordpress/components';
+import { useBlockProps, InspectorControls, RichText, MediaUpload } from '@wordpress/block-editor';
+import { PanelBody, PanelRow, SelectControl, Button } from '@wordpress/components';
 import { image } from '@wordpress/icons';
 
 import './editor.scss';
 
 export default function Edit(props) {
 	const { attributes, setAttributes,clientId } = props;
-	const { blockID, imgSrc, imgAlt, imgSrcset, imgSizes, headline, subHeadline, headlineTag, contentPosition } = attributes;
+	const { blockID, imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, headline, subHeadline, headlineTag, contentPosition } = attributes;
 
 	setAttributes({ blockID: !blockID ? clientId : blockID });
+
+	const onSelectBgImage = img => {
+		setAttributes({
+			imgID: img.id,
+			imgSrc: img.url,
+			imgAlt: img.alt || 'Background Image',
+			// imgWidth: img.width,
+			// imgHeight: img.height
+		})
+	}
+
+	const onRemoveImage = () => {
+		setAttributes({
+			imgID: null,
+			imgSrc: "https://placehold.co/2000x900",
+			imgAlt: null,
+			// imgSrcset: null,
+			// imgSizes: null
+		})
+	} 
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title="Background Image" icon={ image } initialOpen={ true }>
-					<PanelRow>
-						test
-					</PanelRow>
+					<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy"/>
+					<MediaUpload
+							onSelect={ onSelectBgImage }
+							allowedTypes={ [ 'image' ] }
+							value={ imgID }
+							render={({ open }) => (
+								<>
+									<Button
+										className={ `hp-custom-btn ${!imgID ? 'editing' : 'preview'}` }
+										onClick={ open }
+									>
+										{ !imgID && 'Set Image'}
+										{ !!imgID && imgSrc && 'Change Image' }
+									</Button>
+									{
+										!!imgID && imgSrc && (
+											<Button
+												className="hp-custom-btn hp-custom-delete-btn" 
+												isLink 
+												isDestructive 
+												onClick={ onRemoveImage }
+											>
+												Delete Image
+											</Button>
+										)
+									}
+								</>
+							)}
+						/>
 				</PanelBody>
 				<PanelBody title="Headline Tag" initialOpen={ false }>
 					<PanelRow>
@@ -40,11 +86,11 @@ export default function Edit(props) {
 						/>
 					</PanelRow>
 				</PanelBody>
-				{/* <PanelBody title="Spacing" initialOpen={ false }>
+				<PanelBody title="Headline Icon" initialOpen={ false }>
 					<PanelRow>
-						test 2
+						icon upload
 					</PanelRow>
-				</PanelBody> */}
+				</PanelBody>
 			</InspectorControls>
 
 			<section { ...useBlockProps({
@@ -61,7 +107,7 @@ export default function Edit(props) {
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi</p>
 						<a href="#">Learn More</a>
 					</div>
-					{/* <img src="showcase-sample.jpg" alt="" srcset="" sizes="" loading="lazy"> */}
+					<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy" />
 				</div>
 			</section>
 		</>

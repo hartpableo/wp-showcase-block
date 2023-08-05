@@ -18,7 +18,7 @@ export default function save(props) {
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi</p>
 					<a href="#">Learn More</a>
 				</div>
-				{/* <img src="showcase-sample.jpg" alt="" srcset="" sizes="" loading="lazy"> */}
+				<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy" />
 			</div>
 		</section>
 	);

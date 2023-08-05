@@ -1,9 +1,16 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+.hp-custom-btn {
+  display: block;
+  width: 100%;
+}
 
-.wp-block-create-block-hart-showcase-block {
-	border: 1px dotted #f00;
+.hp-custom-btn:not(.hp-custom-delete-btn) {
+  border: 1px solid var(--wp-admin-theme-color,#007cba);
+}
+
+.hp-custom-btn.preview {
+  float: none;
+}
+
+.hp-custom-delete-btn {
+  margin-top: .5em !important;
 }
