@@ -8,7 +8,7 @@ export default function save(props) {
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
 		headline, subHeadline, headlineTag,
 		linkText, linkURL, linkOpenNewTab,
-		contentPosition,
+		contentPositionX, contentPositionY,
 		spacingTop, spacingBottom
 	} = attributes;
 
@@ -18,10 +18,10 @@ export default function save(props) {
 	return (
 		<section { ...useBlockProps.save({
 			id: blockID,
-			className: `hp-showcase-block ${spacingTop} ${spacingBottom}`
+			className: `hp-showcase-block ${spacingTop} ${spacingBottom} ${contentPositionY}`
 		}) }>
-			<div class="container">
-				<div class="hp-custom-showcase-block__info">
+			<div class={ `container ${contentPositionX}` }>
+				<div className={ `hp-custom-showcase-block__info ${contentPositionX}` }>
 					{
 						iconSrc && (
 							<img src={ iconSrc } alt={ iconAlt } width={ iconWidth } height={ iconHeight } loading="lazy" aria-hidden="true"/>
@@ -39,8 +39,8 @@ export default function save(props) {
 						<a href={ linkURL } className="hp-custom-link" target={ linkTarget } rel={ rel }>{ linkText }</a>
 					) }
 				</div>
-				<img src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 			</div>
+			<img className="hp-showcase-block__bg-img" src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 		</section>
 	);
 }

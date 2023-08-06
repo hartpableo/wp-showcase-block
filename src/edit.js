@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, RichText, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, SelectControl, Button, ToggleControl, TextControl } from '@wordpress/components';
-import { image } from '@wordpress/icons';
+import { PanelBody, SelectControl, Button } from '@wordpress/components';
+import { image, title } from '@wordpress/icons';
 import { Link } from '@10up/block-components';
 
 import './editor.scss';
@@ -14,7 +14,7 @@ export default function Edit(props) {
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
 		headline, subHeadline, headlineTag,
 		linkText, linkURL, linkOpenNewTab,
-		contentPosition,
+		contentPositionX, contentPositionY,
 		spacingTop, spacingBottom
 	} = attributes;
 
@@ -77,7 +77,7 @@ export default function Edit(props) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title="Background Image" icon={ image } initialOpen={ true }>
+				<PanelBody title="Background Image" icon={ image } initialOpen={ false }>
 					<MediaUpload
 							onSelect={ onSelectImage }
 							allowedTypes={ [ 'image' ] }
@@ -110,26 +110,25 @@ export default function Edit(props) {
 							)}
 						/>
 				</PanelBody>
-				<PanelBody title="Headline Tag" initialOpen={ true }>
+				<PanelBody title="Manage Headline/Title" icon={ title } initialOpen={ true }>
 					<SelectControl
-						label="Tag"
+						label="Tag to use"
 						value={ headlineTag }
 						options={[
-							{ label: __( 'H1', 'hart-showcase-block' ), value: 'h1' },
-							{ label: __( 'H2', 'hart-showcase-block' ), value: 'h2' },
-							{ label: __( 'H3', 'hart-showcase-block' ), value: 'h3' },
-							{ label: __( 'H4', 'hart-showcase-block' ), value: 'h4' },
-							{ label: __( 'H5', 'hart-showcase-block' ), value: 'h5' },
-							{ label: __( 'H6', 'hart-showcase-block' ), value: 'h6' },
-							{ label: __( 'P', 'hart-showcase-block' ), value: 'p' },
+							{ label: __( 'Heading 1', 'hart-showcase-block' ), value: 'h1' },
+							{ label: __( 'Heading 2', 'hart-showcase-block' ), value: 'h2' },
+							{ label: __( 'Heading 3', 'hart-showcase-block' ), value: 'h3' },
+							{ label: __( 'Heading 4', 'hart-showcase-block' ), value: 'h4' },
+							{ label: __( 'Heading 5', 'hart-showcase-block' ), value: 'h5' },
+							{ label: __( 'Heading 6', 'hart-showcase-block' ), value: 'h6' },
+							{ label: __( 'Paragraph', 'hart-showcase-block' ), value: 'p' },
 						]}
 						onChange={ val => {
 							setAttributes({ headlineTag: val })
 						} }
 						__nextHasNoMarginBottom
 					/>
-				</PanelBody>
-				<PanelBody title="Headline Icon" initialOpen={ false }>
+					<p>Headline Icon</p>
 					<MediaUpload
 						onSelect={ onSelectIcon }
 						allowedTypes={ [ 'image' ] }
@@ -193,29 +192,42 @@ export default function Edit(props) {
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
-				{/* <PanelBody title="Manage Button" initialOpen={ false }>
-					<TextControl
-						label="Link Text"
-						value={ linkText }
-						onChange={ val => setAttributes({ linkText: val }) }
-					/>
-					<ToggleControl
-						label={ __('Open link in new tab?', 'hart-showcase-block') }
-						help={ linkOpenNewTab ? 'Yes' : 'No' }
-						checked={ linkOpenNewTab }
+				<PanelBody title="Content Position" initialOpen={ false }>
+					<SelectControl
+						label="Horizontal Position"
+						value={ contentPositionX }
+						options={[
+							{ label: __( 'Left', 'hart-showcase-block' ), value: 'x-left' },
+							{ label: __( 'Center', 'hart-showcase-block' ), value: 'x-center' },
+							{ label: __( 'Right', 'hart-showcase-block' ), value: 'x-right' },
+						]}
 						onChange={ val => {
-							setAttributes({ linkOpenNewTab: val });
-						}}
+							setAttributes({ contentPositionX: val })
+						} }
+						__nextHasNoMarginBottom
 					/>
-				</PanelBody> */}
+					<SelectControl
+						label="Vertical Position"
+						value={ contentPositionY }
+						options={[
+							{ label: __( 'Top', 'hart-showcase-block' ), value: 'y-top' },
+							{ label: __( 'Center', 'hart-showcase-block' ), value: 'y-center' },
+							{ label: __( 'Bottom', 'hart-showcase-block' ), value: 'y-bottom' },
+						]}
+						onChange={ val => {
+							setAttributes({ contentPositionY: val })
+						} }
+						__nextHasNoMarginBottom
+					/>
+				</PanelBody>
 			</InspectorControls>
 
 			<section { ...useBlockProps({
 				id: blockID,
-				className: `hp-showcase-block ${spacingTop} ${spacingBottom}`
+				className: `hp-showcase-block ${spacingTop} ${spacingBottom} ${contentPositionY}`
 			}) }>
-				<div className="container">
-					<div className="hp-custom-showcase-block__info">
+				<div class={ `container ${contentPositionX}` }>
+					<div className={ `hp-custom-showcase-block__info ${contentPositionX}` }>
 						<div className="hp-custom-showcase-block__info-header">
 							{
 								iconSrc && (
@@ -233,9 +245,6 @@ export default function Edit(props) {
 							value={ subHeadline }
 							onChange={ val => setAttributes({ subHeadline: val }) }
 						/>
-						{/* { linkText && (
-							<a href={ linkURL } className="hp-custom-link" target={ linkOpenNewTab ? '_blank' : '_self' }>{ linkText }</a>
-						) } */}
 						<Link 
 							value={ linkText }
 							url={ linkURL }
@@ -247,8 +256,8 @@ export default function Edit(props) {
 							placeholder='Enter Link Text here...'
             />
 					</div>
-					<img className="hp-showcase-block__bg-img" src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 				</div>
+				<img className="hp-showcase-block__bg-img" src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 			</section>
 		</>
 	);

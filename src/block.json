@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Custom Showcase Block",
 	"category": "design",
-	"icon": "cover-image",
+	"icon": "star-filled",
 	"description": "Custom Lightweight and Flexible Showcase Block.",
 	"supports": {
 		"html": false
@@ -63,8 +63,13 @@
 			"type": "string",
 			"default": "p"
 		},
-		"contentPosition": {
-			"type": "string"
+		"contentPositionX": {
+			"type": "string",
+			"default": "x-left"
+		},
+		"contentPositionY": {
+			"type": "string",
+			"default": "y-center"
 		},
 		"linkText": {
 			"type": "string"
