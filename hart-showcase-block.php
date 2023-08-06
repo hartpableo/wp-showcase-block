@@ -34,6 +34,7 @@ function hp_add_image_sizes() {
 	}
   add_image_size('showcase_block_bg_tablet', 1000, 600, true);
 	add_image_size('showcase_block_bg_mobile', 600, 450, true);
+  add_image_size('showcase_block_icon', 70, 70, false);
 }
 add_action( 'after_setup_theme', 'hp_add_image_sizes' );
 
@@ -41,6 +42,7 @@ function hp_custom_sizes( $sizes ) {
   return array_merge( $sizes, array(
     'showcase_block_bg_tablet' => 'Showcase Background Image: Tablet',
     'showcase_block_bg_mobile' => 'Showcase Background Image: Mobile',
+    'showcase_block_icon' => 'Showcase Icon',
   ) );
 }
 add_filter( 'image_size_names_choose', 'hp_custom_sizes' );

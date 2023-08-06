@@ -7,17 +7,33 @@ import './editor.scss';
 
 export default function Edit(props) {
 	const { attributes, setAttributes,clientId } = props;
-	const { blockID, imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, headline, subHeadline, headlineTag, contentPosition } = attributes;
+	const { 
+		blockID, 
+		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
+		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
+		headline, subHeadline, headlineTag,
+		contentPosition
+	} = attributes;
 
 	setAttributes({ blockID: !blockID ? clientId : blockID });
 
-	const onSelectBgImage = img => {
+	const onSelectImage = img => {
 		setAttributes({
 			imgID: img.id,
 			imgSrc: img.url,
 			imgAlt: img.alt || 'Background Image',
 			// imgWidth: img.width,
 			// imgHeight: img.height
+		})
+	}
+
+	const onSelectIcon = icon => {
+		setAttributes({
+			iconID: icon.id,
+			iconSrc: icon.url,
+			iconAlt: icon.alt || 'Icon',
+			iconWidth: icon.width,
+			iconHeight: icon.height
 		})
 	}
 
@@ -29,14 +45,22 @@ export default function Edit(props) {
 			// imgSrcset: null,
 			// imgSizes: null
 		})
-	} 
+	}
+
+	const onRemoveIcon = () => {
+		setAttributes({
+			iconID: null,
+			iconSrc: null,
+			iconAlt: null,
+		})
+	}
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title="Background Image" icon={ image } initialOpen={ true }>
 					<MediaUpload
-							onSelect={ onSelectBgImage }
+							onSelect={ onSelectImage }
 							allowedTypes={ [ 'image' ] }
 							value={ imgID }
 							render={({ open }) => (
@@ -89,9 +113,37 @@ export default function Edit(props) {
 					</PanelRow>
 				</PanelBody>
 				<PanelBody title="Headline Icon" initialOpen={ false }>
-					<PanelRow>
-						icon upload
-					</PanelRow>
+					<MediaUpload
+						onSelect={ onSelectIcon }
+						allowedTypes={ [ 'image' ] }
+						value={ iconID }
+						render={({ open }) => (
+							<>
+								<Button
+									className={ `hp-custom-btn ${!iconID ? 'editing' : 'preview'}` }
+									onClick={ open }
+								>
+									{ !!iconID && <img src={ iconSrc } alt={ iconAlt } loading="lazy" aria-hidden="true"/> }
+									<div className="hp-btn--img-edit">
+										{ !iconID && 'Set Icon' }
+										{ !!iconID && iconSrc && 'Change Icon' }
+									</div>
+								</Button>
+								{
+									!!iconID && iconSrc && (
+										<Button
+											className="hp-custom-btn hp-custom-delete-btn" 
+											isLink 
+											isDestructive 
+											onClick={ onRemoveIcon }
+										>
+											Delete Icon
+										</Button>
+									)
+								}
+							</>
+						)}
+					/>
 				</PanelBody>
 			</InspectorControls>
 
@@ -99,13 +151,20 @@ export default function Edit(props) {
 				id: blockID,
 				className: `hp-showcase-block`
 			}) }>
-				<div class="container">
-					<div class="hp-custom-showcase-block__info">
-						<RichText
-							tagName={ headlineTag }
-							value={ headline }
-							onChange={ val => setAttributes({ headline: val }) }
-						/>
+				<div className="container">
+					<div className="hp-custom-showcase-block__info">
+						<div className="hp-custom-showcase-block__info-header">
+							{
+								iconSrc && (
+									<img src={ iconSrc } alt={ iconAlt } width={ iconWidth } height={ iconHeight } loading="lazy" aria-hidden="true"/>
+								)
+							}
+							<RichText
+								tagName={ headlineTag }
+								value={ headline }
+								onChange={ val => setAttributes({ headline: val }) }
+							/>
+						</div>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi</p>
 						<a href="#">Learn More</a>
 					</div>

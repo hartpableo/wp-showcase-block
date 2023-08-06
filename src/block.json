@@ -40,6 +40,21 @@
 		"imgSizes": {
 			"type": "string"
 		},
+		"iconID": {
+			"type": "number"
+		},
+		"iconAlt": {
+			"type": "string"
+		},
+		"iconSrc": {
+			"type": "string"
+		},
+		"iconWidth": {
+			"type": "string"
+		},
+		"iconHeight": {
+			"type": "string"
+		},
 		"headline": {
 			"type": "string",
 			"default": "Hello World!"

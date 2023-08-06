@@ -2,7 +2,13 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save(props) {
 	const { attributes } = props;
-	const { blockID, imgSrc, imgAlt, imgSrcset, imgSizes, headline, subHeadline, contentPosition, headlineTag } = attributes;
+	const { 
+		blockID, 
+		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
+		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
+		headline, subHeadline, headlineTag,
+		contentPosition
+	} = attributes;
 
 	return (
 		<section { ...useBlockProps.save({
@@ -11,6 +17,11 @@ export default function save(props) {
 		}) }>
 			<div class="container">
 				<div class="hp-custom-showcase-block__info">
+					{
+						iconSrc && (
+							<img src={ iconSrc } alt={ iconAlt } width={ iconWidth } height={ iconHeight } loading="lazy" aria-hidden="true"/>
+						)
+					}
 					<RichText.Content
 						tagName={ headlineTag }
 						value={ headline }
