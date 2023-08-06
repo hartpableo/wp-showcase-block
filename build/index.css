@@ -30,4 +30,8 @@
   line-height: 1;
 }
 
+.hp-showcase-block__bg-img {
+  height: 100% !important;
+}
+
 /*# sourceMappingURL=index.css.map*/

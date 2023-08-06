@@ -8272,6 +8272,70 @@ var weakMemoize = function weakMemoize(func) {
 
 /***/ }),
 
+/***/ "./node_modules/@wordpress/icons/build-module/library/format-outdent-rtl.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/format-outdent-rtl.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const formatOutdentRTL = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M20 5.5H4V4H20V5.5ZM12 12.5H4V11H12V12.5ZM20 20V18.5H4V20H20ZM15.4697 14.9697L18.4393 12L15.4697 9.03033L16.5303 7.96967L20.0303 11.4697L20.5607 12L20.0303 12.5303L16.5303 16.0303L15.4697 14.9697Z"
+}));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatOutdentRTL);
+//# sourceMappingURL=format-outdent-rtl.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/handle.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/handle.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const handle = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M7 16.5h10V15H7v1.5zm0-9V9h10V7.5H7z"
+}));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (handle);
+//# sourceMappingURL=handle.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@wordpress/icons/build-module/library/image.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@wordpress/icons/build-module/library/image.js ***!
@@ -8357,6 +8421,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/image.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/title.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/handle.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/format-outdent-rtl.js");
 /* harmony import */ var _10up_block_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @10up/block-components */ "./node_modules/@10up/block-components/dist/index.js");
 /* harmony import */ var _10up_block_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_10up_block_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
@@ -8382,6 +8448,7 @@ function Edit(props) {
     imgHeight,
     imgSrcset,
     imgSizes,
+    imgOverlay,
     iconID,
     iconSrc,
     iconAlt,
@@ -8390,6 +8457,8 @@ function Edit(props) {
     headline,
     subHeadline,
     headlineTag,
+    textColor,
+    subtextColor,
     linkText,
     linkURL,
     linkOpenNewTab,
@@ -8425,7 +8494,7 @@ function Edit(props) {
   const onRemoveImage = () => {
     setAttributes({
       imgID: null,
-      imgSrc: "https://placehold.co/2000x900",
+      imgSrc: "https://placehold.co/2000x1500",
       imgAlt: null,
       imgSrcset: null,
       imgSizes: null,
@@ -8484,10 +8553,17 @@ function Edit(props) {
       isDestructive: true,
       onClick: onRemoveImage
     }, "Delete Image"))
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Image Overlay")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
+    color: imgOverlay,
+    onChange: val => setAttributes({
+      imgOverlay: val
+    }),
+    enableAlpha: true,
+    defaultValue: "#000"
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: "Manage Headline/Title",
+    title: "Manage Text",
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
-    initialOpen: true
+    initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: "Tag to use",
     value: headlineTag,
@@ -8541,8 +8617,16 @@ function Edit(props) {
       isDestructive: true,
       onClick: onRemoveIcon
     }, "Delete Icon"))
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Text Color"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
+    color: textColor,
+    onChange: val => setAttributes({
+      textColor: val
+    }),
+    enableAlpha: true,
+    defaultValue: "#fff"
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Block Spacing",
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: "Top Spacing",
@@ -8595,6 +8679,7 @@ function Edit(props) {
     __nextHasNoMarginBottom: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Content Position",
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: "Horizontal Position",
@@ -8655,12 +8740,18 @@ function Edit(props) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: headlineTag,
     value: headline,
+    style: {
+      color: textColor
+    },
     onChange: val => setAttributes({
       headline: val
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     value: subHeadline,
+    style: {
+      color: textColor
+    },
     onChange: val => setAttributes({
       subHeadline: val
     })
@@ -8682,6 +8773,12 @@ function Edit(props) {
     width: imgWidth,
     height: imgHeight,
     loading: "lazy"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-img-overlay",
+    "aria-hidden": "true",
+    style: {
+      backgroundColor: imgOverlay
+    }
   })));
 }
 
@@ -8772,6 +8869,7 @@ function save(props) {
     imgHeight,
     imgSrcset,
     imgSizes,
+    imgOverlay,
     iconID,
     iconSrc,
     iconAlt,
@@ -8780,6 +8878,7 @@ function save(props) {
     headline,
     subHeadline,
     headlineTag,
+    textColor,
     linkText,
     linkURL,
     linkOpenNewTab,
@@ -8808,10 +8907,16 @@ function save(props) {
     "aria-hidden": "true"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: headlineTag,
-    value: headline
+    value: headline,
+    style: {
+      color: textColor
+    }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
-    value: subHeadline
+    value: subHeadline,
+    style: {
+      color: textColor
+    }
   }), linkURL && linkText && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: linkURL,
     className: "hp-custom-link",
@@ -8826,6 +8931,12 @@ function save(props) {
     width: imgWidth,
     height: imgHeight,
     loading: "lazy"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-img-overlay",
+    "aria-hidden": "true",
+    style: {
+      backgroundColor: imgOverlay
+    }
   }));
 }
 
@@ -14413,7 +14524,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"star-filled","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"number"},"imgHeight":{"type":"number"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"iconID":{"type":"number"},"iconAlt":{"type":"string"},"iconSrc":{"type":"string"},"iconWidth":{"type":"number"},"iconHeight":{"type":"number"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPositionX":{"type":"string","default":"x-left"},"contentPositionY":{"type":"string","default":"y-center"},"linkText":{"type":"string"},"linkURL":{"type":"string"},"linkOpenNewTab":{"type":"boolean","default":false},"spacingTop":{"type":"string","default":"spacing-top--none"},"spacingBottom":{"type":"string","default":"spacing-bottom--none"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"star-filled","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x1500"},"imgAlt":{"type":"string"},"imgWidth":{"type":"number"},"imgHeight":{"type":"number"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"imgOverlay":{"type":"string","default":"rgba(0, 0, 0, .5)"},"iconID":{"type":"number"},"iconAlt":{"type":"string"},"iconSrc":{"type":"string"},"iconWidth":{"type":"number"},"iconHeight":{"type":"number"},"headline":{"type":"string","default":"Hello World!"},"textColor":{"type":"string","default":"#fff"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPositionX":{"type":"string","default":"x-left"},"contentPositionY":{"type":"string","default":"y-center"},"linkText":{"type":"string"},"linkURL":{"type":"string"},"linkOpenNewTab":{"type":"boolean","default":false},"spacingTop":{"type":"string","default":"spacing-top--none"},"spacingBottom":{"type":"string","default":"spacing-bottom--none"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

@@ -44,6 +44,7 @@ $spacingVals: (
   }
   .container {
     max-width: var(--wp--style--global--content-size);
+    width: 100%;
     padding-left: var(--spacing);
     padding-right: var(--spacing);
     margin: 0 auto;
@@ -66,7 +67,7 @@ $spacingVals: (
     }
   }
   &__bg-img {
-    z-index: -1;
+    z-index: -2;
     display: block;
     position: absolute;
     top: 0;
@@ -79,6 +80,15 @@ $spacingVals: (
   h1 {
     margin: 0 0 .5em;
     line-height: 1.2;
+  }
+  .bg-img-overlay {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
 }
 

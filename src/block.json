@@ -19,7 +19,7 @@
 		},
 		"imgSrc": {
 			"type": "string",
-			"default": "https://placehold.co/2000x900"
+			"default": "https://placehold.co/2000x1500"
 		},
 		"imgAlt": {
 			"type": "string"
@@ -35,6 +35,10 @@
 		},
 		"imgSizes": {
 			"type": "string"
+		},
+		"imgOverlay": {
+			"type": "string",
+			"default": "rgba(0, 0, 0, .5)"
 		},
 		"iconID": {
 			"type": "number"
@@ -54,6 +58,10 @@
 		"headline": {
 			"type": "string",
 			"default": "Hello World!"
+		},
+		"textColor": {
+			"type": "string",
+			"default": "#fff"
 		},
 		"subHeadline": {
 			"type": "string",

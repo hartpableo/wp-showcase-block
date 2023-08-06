@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, RichText, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, Button } from '@wordpress/components';
-import { image, title } from '@wordpress/icons';
+import { PanelBody, SelectControl, Button, ColorPicker } from '@wordpress/components';
+import { image, title, handle, formatOutdentRTL } from '@wordpress/icons';
 import { Link } from '@10up/block-components';
 
 import './editor.scss';
@@ -10,9 +10,9 @@ export default function Edit(props) {
 	const { attributes, setAttributes, clientId } = props;
 	const { 
 		blockID, 
-		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
+		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, imgOverlay,
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
-		headline, subHeadline, headlineTag,
+		headline, subHeadline, headlineTag, textColor, subtextColor,
 		linkText, linkURL, linkOpenNewTab,
 		contentPositionX, contentPositionY,
 		spacingTop, spacingBottom
@@ -46,7 +46,7 @@ export default function Edit(props) {
 	const onRemoveImage = () => {
 		setAttributes({
 			imgID: null,
-			imgSrc: "https://placehold.co/2000x900",
+			imgSrc: "https://placehold.co/2000x1500",
 			imgAlt: null,
 			imgSrcset: null,
 			imgSizes: null,
@@ -109,8 +109,16 @@ export default function Edit(props) {
 								</>
 							)}
 						/>
+						<hr/>
+						<p><strong>Image Overlay</strong></p>
+						<ColorPicker
+							color={ imgOverlay }
+							onChange={ val => setAttributes({ imgOverlay: val }) }
+							enableAlpha
+							defaultValue="#000"
+						/>
 				</PanelBody>
-				<PanelBody title="Manage Headline/Title" icon={ title } initialOpen={ true }>
+				<PanelBody title="Manage Text" icon={ title } initialOpen={ false }>
 					<SelectControl
 						label="Tag to use"
 						value={ headlineTag }
@@ -160,8 +168,16 @@ export default function Edit(props) {
 							</>
 						)}
 					/>
+					<hr/>
+					<p>Text Color</p>
+					<ColorPicker
+						color={ textColor }
+						onChange={ val => setAttributes({ textColor: val }) }
+						enableAlpha
+						defaultValue="#fff"
+					/>
 				</PanelBody>
-				<PanelBody title="Block Spacing" initialOpen={ false }>
+				<PanelBody title="Block Spacing" icon={ handle } initialOpen={ false }>
 					<SelectControl
 						label="Top Spacing"
 						value={ spacingTop }
@@ -192,7 +208,7 @@ export default function Edit(props) {
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
-				<PanelBody title="Content Position" initialOpen={ false }>
+				<PanelBody title="Content Position" icon={ formatOutdentRTL } initialOpen={ false }>
 					<SelectControl
 						label="Horizontal Position"
 						value={ contentPositionX }
@@ -237,12 +253,18 @@ export default function Edit(props) {
 							<RichText
 								tagName={ headlineTag }
 								value={ headline }
+								style={{
+									color: textColor
+								}}
 								onChange={ val => setAttributes({ headline: val }) }
 							/>
 						</div>
 						<RichText
 							tagName="p"
 							value={ subHeadline }
+							style={{
+								color: textColor
+							}}
 							onChange={ val => setAttributes({ subHeadline: val }) }
 						/>
 						<Link 
@@ -258,6 +280,7 @@ export default function Edit(props) {
 					</div>
 				</div>
 				<img className="hp-showcase-block__bg-img" src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
+				<div className="bg-img-overlay" aria-hidden="true" style={{ backgroundColor: imgOverlay }}></div>
 			</section>
 		</>
 	);
