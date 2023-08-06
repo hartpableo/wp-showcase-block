@@ -106,13 +106,7 @@ function Edit(props) {
     title: "Background Image",
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: imgSrc,
-    alt: imgAlt,
-    srcset: "",
-    sizes: "",
-    loading: "lazy"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
     onSelect: onSelectBgImage,
     allowedTypes: ['image'],
     value: imgID,
@@ -121,7 +115,15 @@ function Edit(props) {
     }) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
       className: `hp-custom-btn ${!imgID ? 'editing' : 'preview'}`,
       onClick: open
-    }, !imgID && 'Set Image', !!imgID && imgSrc && 'Change Image'), !!imgID && imgSrc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: imgSrc,
+      alt: imgAlt,
+      srcset: "",
+      sizes: "",
+      loading: "lazy"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "hp-btn--img-edit"
+    }, !imgID && 'Set Image', !!imgID && imgSrc && 'Change Image')), !!imgID && imgSrc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
       className: "hp-custom-btn hp-custom-delete-btn",
       isLink: true,
       isDestructive: true,
@@ -392,7 +394,7 @@ module.exports = window["wp"]["primitives"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false,"spacing":{"margin":true,"padding":true}},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"string"},"imgHeight":{"type":"string"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false,"spacing":{"margin":true,"padding":true}},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"string"},"imgHeight":{"type":"string"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

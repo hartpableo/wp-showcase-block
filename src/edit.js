@@ -35,7 +35,6 @@ export default function Edit(props) {
 		<>
 			<InspectorControls>
 				<PanelBody title="Background Image" icon={ image } initialOpen={ true }>
-					<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy"/>
 					<MediaUpload
 							onSelect={ onSelectBgImage }
 							allowedTypes={ [ 'image' ] }
@@ -46,8 +45,11 @@ export default function Edit(props) {
 										className={ `hp-custom-btn ${!imgID ? 'editing' : 'preview'}` }
 										onClick={ open }
 									>
-										{ !imgID && 'Set Image'}
-										{ !!imgID && imgSrc && 'Change Image' }
+										<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy"/>
+										<div className='hp-btn--img-edit'>
+											{ !imgID && 'Set Image' }
+											{ !!imgID && imgSrc && 'Change Image' }
+										</div>
 									</Button>
 									{
 										!!imgID && imgSrc && (

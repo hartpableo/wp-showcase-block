@@ -1,6 +1,7 @@
 .hp-custom-btn {
   display: block;
   width: 100%;
+  height: fit-content;
 }
 
 .hp-custom-btn:not(.hp-custom-delete-btn) {
@@ -9,8 +10,18 @@
 
 .hp-custom-btn.preview {
   float: none;
+  padding: 0;
+}
+
+.hp-custom-btn.editing {
+  padding: 0;
 }
 
 .hp-custom-delete-btn {
   margin-top: .5em !important;
+}
+
+.hp-btn--img-edit {
+  padding: .65em 0.3em;
+  line-height: 1;
 }
