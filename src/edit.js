@@ -12,7 +12,7 @@ export default function Edit(props) {
 		blockID, 
 		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, imgOverlay,
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
-		headline, subHeadline, headlineTag, textColor, subtextColor,
+		headline, subHeadline, headlineTag, textColor,
 		linkText, linkURL, linkOpenNewTab,
 		contentPositionX, contentPositionY,
 		spacingTop, spacingBottom
