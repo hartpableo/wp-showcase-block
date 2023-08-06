@@ -26,10 +26,13 @@ export default function save(props) {
 						tagName={ headlineTag }
 						value={ headline }
 					/>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi</p>
+					<RichText.Content
+						tagName="p"
+						value={ subHeadline }
+					/>
 					<a href="#">Learn More</a>
 				</div>
-				<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy" />
+				<img src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 			</div>
 		</section>
 	);

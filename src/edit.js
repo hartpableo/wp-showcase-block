@@ -6,7 +6,7 @@ import { image } from '@wordpress/icons';
 import './editor.scss';
 
 export default function Edit(props) {
-	const { attributes, setAttributes,clientId } = props;
+	const { attributes, setAttributes, clientId } = props;
 	const { 
 		blockID, 
 		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
@@ -18,22 +18,25 @@ export default function Edit(props) {
 	setAttributes({ blockID: !blockID ? clientId : blockID });
 
 	const onSelectImage = img => {
+		let srcSet = `${img.sizes.full.url} ${img.sizes.full.width}w, ${img.sizes.showcase_block_bg_tablet.url} ${img.sizes.showcase_block_bg_tablet.width}w, ${img.sizes.showcase_block_bg_mobile.url} ${img.sizes.showcase_block_bg_mobile.width}w,`;
 		setAttributes({
 			imgID: img.id,
 			imgSrc: img.url,
 			imgAlt: img.alt || 'Background Image',
-			// imgWidth: img.width,
-			// imgHeight: img.height
+			imgWidth: img.width,
+			imgHeight: img.height,
+			imgSrcset: srcSet,
+			imgSizes: "100vw"
 		})
 	}
 
 	const onSelectIcon = icon => {
 		setAttributes({
 			iconID: icon.id,
-			iconSrc: icon.url,
+			iconSrc: icon.sizes.showcase_block_icon.url,
 			iconAlt: icon.alt || 'Icon',
-			iconWidth: icon.width,
-			iconHeight: icon.height
+			iconWidth: icon.sizes.showcase_block_icon.width,
+			iconHeight: icon.sizes.showcase_block_icon.height
 		})
 	}
 
@@ -69,7 +72,7 @@ export default function Edit(props) {
 										className={ `hp-custom-btn ${!imgID ? 'editing' : 'preview'}` }
 										onClick={ open }
 									>
-										<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy"/>
+										<img src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 										<div className='hp-btn--img-edit'>
 											{ !imgID && 'Set Image' }
 											{ !!imgID && imgSrc && 'Change Image' }
@@ -80,7 +83,7 @@ export default function Edit(props) {
 											<Button
 												className="hp-custom-btn hp-custom-delete-btn" 
 												isLink 
-												isDestructive 
+												isDestructive
 												onClick={ onRemoveImage }
 											>
 												Delete Image
@@ -165,10 +168,14 @@ export default function Edit(props) {
 								onChange={ val => setAttributes({ headline: val }) }
 							/>
 						</div>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi</p>
+						<RichText
+							tagName="p"
+							value={ subHeadline }
+							onChange={ val => setAttributes({ subHeadline: val }) }
+						/>
 						<a href="#">Learn More</a>
 					</div>
-					<img src={ imgSrc } alt={ imgAlt } srcset="" sizes="" loading="lazy" />
+					<img src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 				</div>
 			</section>
 		</>

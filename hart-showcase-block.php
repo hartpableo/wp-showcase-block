@@ -34,7 +34,7 @@ function hp_add_image_sizes() {
 	}
   add_image_size('showcase_block_bg_tablet', 1000, 600, true);
 	add_image_size('showcase_block_bg_mobile', 600, 450, true);
-  add_image_size('showcase_block_icon', 70, 70, false);
+  add_image_size('showcase_block_icon', 90, 90, false);
 }
 add_action( 'after_setup_theme', 'hp_add_image_sizes' );
 

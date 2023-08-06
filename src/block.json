@@ -29,10 +29,10 @@
 			"type": "string"
 		},
 		"imgWidth": {
-			"type": "string"
+			"type": "number"
 		},
 		"imgHeight": {
-			"type": "string"
+			"type": "number"
 		},
 		"imgSrcset": {
 			"type": "string"
@@ -50,10 +50,10 @@
 			"type": "string"
 		},
 		"iconWidth": {
-			"type": "string"
+			"type": "number"
 		},
 		"iconHeight": {
-			"type": "string"
+			"type": "number"
 		},
 		"headline": {
 			"type": "string",

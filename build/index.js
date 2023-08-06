@@ -88,22 +88,24 @@ function Edit(props) {
     blockID: !blockID ? clientId : blockID
   });
   const onSelectImage = img => {
+    let srcSet = `${img.sizes.full.url} ${img.sizes.full.width}w, ${img.sizes.showcase_block_bg_tablet.url} ${img.sizes.showcase_block_bg_tablet.width}w, ${img.sizes.showcase_block_bg_mobile.url} ${img.sizes.showcase_block_bg_mobile.width}w,`;
     setAttributes({
       imgID: img.id,
       imgSrc: img.url,
-      imgAlt: img.alt || 'Background Image'
-      // imgWidth: img.width,
-      // imgHeight: img.height
+      imgAlt: img.alt || 'Background Image',
+      imgWidth: img.width,
+      imgHeight: img.height,
+      imgSrcset: srcSet,
+      imgSizes: "100vw"
     });
   };
-
   const onSelectIcon = icon => {
     setAttributes({
       iconID: icon.id,
-      iconSrc: icon.url,
+      iconSrc: icon.sizes.showcase_block_icon.url,
       iconAlt: icon.alt || 'Icon',
-      iconWidth: icon.width,
-      iconHeight: icon.height
+      iconWidth: icon.sizes.showcase_block_icon.width,
+      iconHeight: icon.sizes.showcase_block_icon.height
     });
   };
   const onRemoveImage = () => {
@@ -139,8 +141,10 @@ function Edit(props) {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: imgSrc,
       alt: imgAlt,
-      srcset: "",
-      sizes: "",
+      srcset: imgSrcset,
+      sizes: imgSizes,
+      width: imgWidth,
+      height: imgHeight,
       loading: "lazy"
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "hp-btn--img-edit"
@@ -233,13 +237,21 @@ function Edit(props) {
     onChange: val => setAttributes({
       headline: val
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: subHeadline,
+    onChange: val => setAttributes({
+      subHeadline: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#"
   }, "Learn More")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imgSrc,
     alt: imgAlt,
-    srcset: "",
-    sizes: "",
+    srcset: imgSrcset,
+    sizes: imgSizes,
+    width: imgWidth,
+    height: imgHeight,
     loading: "lazy"
   }))));
 }
@@ -358,13 +370,18 @@ function save(props) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: headlineTag,
     value: headline
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta simi"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "p",
+    value: subHeadline
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#"
   }, "Learn More")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imgSrc,
     alt: imgAlt,
-    srcset: "",
-    sizes: "",
+    srcset: imgSrcset,
+    sizes: imgSizes,
+    width: imgWidth,
+    height: imgHeight,
     loading: "lazy"
   })));
 }
@@ -461,7 +478,7 @@ module.exports = window["wp"]["primitives"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false,"spacing":{"margin":true,"padding":true}},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"string"},"imgHeight":{"type":"string"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"iconID":{"type":"number"},"iconAlt":{"type":"string"},"iconSrc":{"type":"string"},"iconWidth":{"type":"string"},"iconHeight":{"type":"string"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false,"spacing":{"margin":true,"padding":true}},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"number"},"imgHeight":{"type":"number"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"iconID":{"type":"number"},"iconAlt":{"type":"string"},"iconSrc":{"type":"string"},"iconWidth":{"type":"number"},"iconHeight":{"type":"number"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
