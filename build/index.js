@@ -82,7 +82,9 @@ function Edit(props) {
     headline,
     subHeadline,
     headlineTag,
-    contentPosition
+    contentPosition,
+    spacingTop,
+    spacingBottom
   } = attributes;
   setAttributes({
     blockID: !blockID ? clientId : blockID
@@ -112,12 +114,13 @@ function Edit(props) {
     setAttributes({
       imgID: null,
       imgSrc: "https://placehold.co/2000x900",
-      imgAlt: null
-      // imgSrcset: null,
-      // imgSizes: null
+      imgAlt: null,
+      imgSrcset: null,
+      imgSizes: null,
+      imgWidth: null,
+      imgHeight: null
     });
   };
-
   const onRemoveIcon = () => {
     setAttributes({
       iconID: null,
@@ -157,7 +160,7 @@ function Edit(props) {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Headline Tag",
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: "Tag",
     value: headlineTag,
     options: [{
@@ -188,7 +191,7 @@ function Edit(props) {
       });
     },
     __nextHasNoMarginBottom: true
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Headline Icon",
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
@@ -213,10 +216,62 @@ function Edit(props) {
       isDestructive: true,
       onClick: onRemoveIcon
     }, "Delete Icon"))
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: "Block Spacing",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: "Top Spacing",
+    value: spacingTop,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('None', 'hart-showcase-block'),
+      value: 'spacing-top--none'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Small', 'hart-showcase-block'),
+      value: 'spacing-top--sm'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Medium', 'hart-showcase-block'),
+      value: 'spacing-top--md'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Large', 'hart-showcase-block'),
+      value: 'spacing-top--lg'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Extra-Large', 'hart-showcase-block'),
+      value: 'spacing-top--xl'
+    }],
+    onChange: val => {
+      setAttributes({
+        spacingTop: val
+      });
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: "Bottom Spacing",
+    value: spacingBottom,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('None', 'hart-showcase-block'),
+      value: 'spacing-bottom--none'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Small', 'hart-showcase-block'),
+      value: 'spacing-bottom--sm'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Medium', 'hart-showcase-block'),
+      value: 'spacing-bottom--md'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Large', 'hart-showcase-block'),
+      value: 'spacing-bottom--lg'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Extra-Large', 'hart-showcase-block'),
+      value: 'spacing-bottom--xl'
+    }],
+    onChange: val => {
+      setAttributes({
+        spacingBottom: val
+      });
+    },
+    __nextHasNoMarginBottom: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       id: blockID,
-      className: `hp-showcase-block`
+      className: `hp-showcase-block ${spacingTop} ${spacingBottom}`
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container"
@@ -246,6 +301,7 @@ function Edit(props) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#"
   }, "Learn More")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "hp-showcase-block__bg-img",
     src: imgSrc,
     alt: imgAlt,
     srcset: imgSrcset,
@@ -349,12 +405,14 @@ function save(props) {
     headline,
     subHeadline,
     headlineTag,
-    contentPosition
+    contentPosition,
+    spacingTop,
+    spacingBottom
   } = attributes;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
       id: blockID,
-      className: `hp-showcase-block`
+      className: `hp-showcase-block ${spacingTop} ${spacingBottom}`
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     class: "container"
@@ -478,7 +536,7 @@ module.exports = window["wp"]["primitives"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false,"spacing":{"margin":true,"padding":true}},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"number"},"imgHeight":{"type":"number"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"iconID":{"type":"number"},"iconAlt":{"type":"string"},"iconSrc":{"type":"string"},"iconWidth":{"type":"number"},"iconHeight":{"type":"number"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/hart-showcase-block","version":"0.1.0","title":"Custom Showcase Block","category":"design","icon":"cover-image","description":"Custom Lightweight and Flexible Showcase Block.","supports":{"html":false},"attributes":{"blockID":{"type":"string"},"imgID":{"type":"number"},"imgSrc":{"type":"string","default":"https://placehold.co/2000x900"},"imgAlt":{"type":"string"},"imgWidth":{"type":"number"},"imgHeight":{"type":"number"},"imgSrcset":{"type":"string"},"imgSizes":{"type":"string"},"iconID":{"type":"number"},"iconAlt":{"type":"string"},"iconSrc":{"type":"string"},"iconWidth":{"type":"number"},"iconHeight":{"type":"number"},"headline":{"type":"string","default":"Hello World!"},"subHeadline":{"type":"string","default":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"headlineTag":{"type":"string","default":"p"},"contentPosition":{"type":"string"},"spacingTop":{"type":"string","default":"spacing-top--none"},"spacingBottom":{"type":"string","default":"spacing-bottom--none"}},"textdomain":"hart-showcase-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

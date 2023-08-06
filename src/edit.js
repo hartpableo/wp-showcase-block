@@ -12,7 +12,8 @@ export default function Edit(props) {
 		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
 		headline, subHeadline, headlineTag,
-		contentPosition
+		contentPosition,
+		spacingTop, spacingBottom
 	} = attributes;
 
 	setAttributes({ blockID: !blockID ? clientId : blockID });
@@ -45,8 +46,10 @@ export default function Edit(props) {
 			imgID: null,
 			imgSrc: "https://placehold.co/2000x900",
 			imgAlt: null,
-			// imgSrcset: null,
-			// imgSizes: null
+			imgSrcset: null,
+			imgSizes: null,
+			imgWidth: null,
+			imgHeight: null
 		})
 	}
 
@@ -95,25 +98,23 @@ export default function Edit(props) {
 						/>
 				</PanelBody>
 				<PanelBody title="Headline Tag" initialOpen={ true }>
-					<PanelRow>
-						<SelectControl
-							label="Tag"
-							value={ headlineTag }
-							options={[
-                { label: __( 'H1', 'hart-showcase-block' ), value: 'h1' },
-                { label: __( 'H2', 'hart-showcase-block' ), value: 'h2' },
-								{ label: __( 'H3', 'hart-showcase-block' ), value: 'h3' },
-								{ label: __( 'H4', 'hart-showcase-block' ), value: 'h4' },
-								{ label: __( 'H5', 'hart-showcase-block' ), value: 'h5' },
-								{ label: __( 'H6', 'hart-showcase-block' ), value: 'h6' },
-								{ label: __( 'P', 'hart-showcase-block' ), value: 'p' },
-            	]}
-							onChange={ val => {
-								setAttributes({ headlineTag: val })
-							} }
-            	__nextHasNoMarginBottom
-						/>
-					</PanelRow>
+					<SelectControl
+						label="Tag"
+						value={ headlineTag }
+						options={[
+							{ label: __( 'H1', 'hart-showcase-block' ), value: 'h1' },
+							{ label: __( 'H2', 'hart-showcase-block' ), value: 'h2' },
+							{ label: __( 'H3', 'hart-showcase-block' ), value: 'h3' },
+							{ label: __( 'H4', 'hart-showcase-block' ), value: 'h4' },
+							{ label: __( 'H5', 'hart-showcase-block' ), value: 'h5' },
+							{ label: __( 'H6', 'hart-showcase-block' ), value: 'h6' },
+							{ label: __( 'P', 'hart-showcase-block' ), value: 'p' },
+						]}
+						onChange={ val => {
+							setAttributes({ headlineTag: val })
+						} }
+						__nextHasNoMarginBottom
+					/>
 				</PanelBody>
 				<PanelBody title="Headline Icon" initialOpen={ false }>
 					<MediaUpload
@@ -148,11 +149,42 @@ export default function Edit(props) {
 						)}
 					/>
 				</PanelBody>
+				<PanelBody title="Block Spacing" initialOpen={ false }>
+					<SelectControl
+						label="Top Spacing"
+						value={ spacingTop }
+						options={[
+							{ label: __( 'None', 'hart-showcase-block' ), value: 'spacing-top--none' },
+							{ label: __( 'Small', 'hart-showcase-block' ), value: 'spacing-top--sm' },
+							{ label: __( 'Medium', 'hart-showcase-block' ), value: 'spacing-top--md' },
+							{ label: __( 'Large', 'hart-showcase-block' ), value: 'spacing-top--lg' },
+							{ label: __( 'Extra-Large', 'hart-showcase-block' ), value: 'spacing-top--xl' },
+						]}
+						onChange={ val => {
+							setAttributes({ spacingTop: val })
+						} }
+					/>
+					<SelectControl
+						label="Bottom Spacing"
+						value={ spacingBottom }
+						options={[
+							{ label: __( 'None', 'hart-showcase-block' ), value: 'spacing-bottom--none' },
+							{ label: __( 'Small', 'hart-showcase-block' ), value: 'spacing-bottom--sm' },
+							{ label: __( 'Medium', 'hart-showcase-block' ), value: 'spacing-bottom--md' },
+							{ label: __( 'Large', 'hart-showcase-block' ), value: 'spacing-bottom--lg' },
+							{ label: __( 'Extra-Large', 'hart-showcase-block' ), value: 'spacing-bottom--xl' },
+						]}
+						onChange={ val => {
+							setAttributes({ spacingBottom: val })
+						} }
+						__nextHasNoMarginBottom
+					/>
+				</PanelBody>
 			</InspectorControls>
 
 			<section { ...useBlockProps({
 				id: blockID,
-				className: `hp-showcase-block`
+				className: `hp-showcase-block ${spacingTop} ${spacingBottom}`
 			}) }>
 				<div className="container">
 					<div className="hp-custom-showcase-block__info">
@@ -175,7 +207,7 @@ export default function Edit(props) {
 						/>
 						<a href="#">Learn More</a>
 					</div>
-					<img src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
+					<img className="hp-showcase-block__bg-img" src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 				</div>
 			</section>
 		</>

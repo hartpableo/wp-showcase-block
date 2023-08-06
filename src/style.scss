@@ -1,1 +1,23 @@
+$spacingVals: (
+  'sm': '1rem',
+  'md': '1.25rem',
+  'lg': '1.75rem',
+  'xl': '2rem',
+);
 
+@each $key, $val in $spacingVals {
+  .hp-showcase-block {
+    &.spacing-top--#{$key} {
+      margin-top: #{$val};
+    }
+    &.spacing-bottom--#{$key} {
+      margin-bottom: #{$val};
+    }
+  }
+}
+
+.hp-showcase-block {
+  &__bg-img {
+    display: block;
+  }
+}

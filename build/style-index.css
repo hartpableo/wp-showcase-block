@@ -1,4 +1,36 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
+.hp-showcase-block.spacing-top--sm {
+  margin-top: 1rem;
+}
+.hp-showcase-block.spacing-bottom--sm {
+  margin-bottom: 1rem;
+}
 
+.hp-showcase-block.spacing-top--md {
+  margin-top: 1.25rem;
+}
+.hp-showcase-block.spacing-bottom--md {
+  margin-bottom: 1.25rem;
+}
+
+.hp-showcase-block.spacing-top--lg {
+  margin-top: 1.75rem;
+}
+.hp-showcase-block.spacing-bottom--lg {
+  margin-bottom: 1.75rem;
+}
+
+.hp-showcase-block.spacing-top--xl {
+  margin-top: 2rem;
+}
+.hp-showcase-block.spacing-bottom--xl {
+  margin-bottom: 2rem;
+}
+
+.hp-showcase-block__bg-img {
+  display: block;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

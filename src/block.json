@@ -8,11 +8,7 @@
 	"icon": "cover-image",
 	"description": "Custom Lightweight and Flexible Showcase Block.",
 	"supports": {
-		"html": false,
-		"spacing": {
-			"margin": true,
-			"padding": true
-		}
+		"html": false
 	},
 	"attributes": {
 		"blockID": {
@@ -69,6 +65,14 @@
 		},
 		"contentPosition": {
 			"type": "string"
+		},
+		"spacingTop": {
+			"type": "string",
+			"default": "spacing-top--none"
+		},
+		"spacingBottom": {
+			"type": "string",
+			"default": "spacing-bottom--none"
 		}
 	},
 	"textdomain": "hart-showcase-block",

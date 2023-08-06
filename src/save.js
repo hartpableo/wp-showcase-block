@@ -7,13 +7,14 @@ export default function save(props) {
 		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
 		headline, subHeadline, headlineTag,
-		contentPosition
+		contentPosition,
+		spacingTop, spacingBottom
 	} = attributes;
 
 	return (
 		<section { ...useBlockProps.save({
 			id: blockID,
-			className: `hp-showcase-block`
+			className: `hp-showcase-block ${spacingTop} ${spacingBottom}`
 		}) }>
 			<div class="container">
 				<div class="hp-custom-showcase-block__info">
