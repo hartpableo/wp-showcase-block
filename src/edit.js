@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, RichText, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, SelectControl, Button } from '@wordpress/components';
+import { PanelBody, PanelRow, SelectControl, Button, ToggleControl, TextControl } from '@wordpress/components';
 import { image } from '@wordpress/icons';
+import { Link } from '@10up/block-components';
 
 import './editor.scss';
 
@@ -12,6 +13,7 @@ export default function Edit(props) {
 		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
 		headline, subHeadline, headlineTag,
+		linkText, linkURL, linkOpenNewTab,
 		contentPosition,
 		spacingTop, spacingBottom
 	} = attributes;
@@ -60,6 +62,17 @@ export default function Edit(props) {
 			iconAlt: null,
 		})
 	}
+
+	const handleTextChange = value => setAttributes({linkText: value});
+	const handleLinkChange = value => setAttributes({
+			linkURL: value?.url,
+			linkOpenNewTab: value?.opensInNewTab,
+			linkText: value?.title ?? linkText
+	});
+	const handleLinkRemove = () => setAttributes({
+			linkURL: null,
+			linkOpenNewTab: null
+	});
 
 	return (
 		<>
@@ -180,6 +193,21 @@ export default function Edit(props) {
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
+				{/* <PanelBody title="Manage Button" initialOpen={ false }>
+					<TextControl
+						label="Link Text"
+						value={ linkText }
+						onChange={ val => setAttributes({ linkText: val }) }
+					/>
+					<ToggleControl
+						label={ __('Open link in new tab?', 'hart-showcase-block') }
+						help={ linkOpenNewTab ? 'Yes' : 'No' }
+						checked={ linkOpenNewTab }
+						onChange={ val => {
+							setAttributes({ linkOpenNewTab: val });
+						}}
+					/>
+				</PanelBody> */}
 			</InspectorControls>
 
 			<section { ...useBlockProps({
@@ -205,7 +233,19 @@ export default function Edit(props) {
 							value={ subHeadline }
 							onChange={ val => setAttributes({ subHeadline: val }) }
 						/>
-						<a href="#">Learn More</a>
+						{/* { linkText && (
+							<a href={ linkURL } className="hp-custom-link" target={ linkOpenNewTab ? '_blank' : '_self' }>{ linkText }</a>
+						) } */}
+						<Link 
+							value={ linkText }
+							url={ linkURL }
+							opensInNewTab={ linkOpenNewTab }
+							onTextChange={ handleTextChange }
+							onLinkChange={ handleLinkChange }
+							onLinkRemove={ handleLinkRemove }
+							className='hp-custom-link'
+							placeholder='Enter Link Text here...'
+            />
 					</div>
 					<img className="hp-showcase-block__bg-img" src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 				</div>

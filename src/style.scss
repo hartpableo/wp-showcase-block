@@ -21,3 +21,24 @@ $spacingVals: (
     display: block;
   }
 }
+
+.hp-custom-link,
+.hp-custom-link[role="textbox"] {
+  --theme-color: #007cba;
+  transition: all 250ms ease;
+  display: inline-block;
+  text-align: start;
+  width: fit-content;
+  line-height: 1;
+  padding: .5em 1.25em;
+  background-color: var(--theme-color);
+  text-decoration: none !important;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  color: #fff;
+  border: 1px solid var(--theme-color);
+  &:hover {
+    background-color: transparent;
+    color: var(--theme-color);
+  }
+}

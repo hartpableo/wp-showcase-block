@@ -66,6 +66,16 @@
 		"contentPosition": {
 			"type": "string"
 		},
+		"linkText": {
+			"type": "string"
+		},
+		"linkURL": {
+			"type": "string"
+		},
+		"linkOpenNewTab": {
+			"type": "boolean",
+			"default": false
+		},
 		"spacingTop": {
 			"type": "string",
 			"default": "spacing-top--none"

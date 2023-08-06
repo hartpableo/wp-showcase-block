@@ -7,9 +7,13 @@ export default function save(props) {
 		imgID, imgSrc, imgAlt, imgWidth, imgHeight, imgSrcset, imgSizes, 
 		iconID, iconSrc, iconAlt, iconWidth, iconHeight, 
 		headline, subHeadline, headlineTag,
+		linkText, linkURL, linkOpenNewTab,
 		contentPosition,
 		spacingTop, spacingBottom
 	} = attributes;
+
+	const linkTarget = linkOpenNewTab ? '_blank' : '_self';
+	const rel = linkOpenNewTab ? 'noopener noreferrer' : 'noopener';
 
 	return (
 		<section { ...useBlockProps.save({
@@ -31,7 +35,9 @@ export default function save(props) {
 						tagName="p"
 						value={ subHeadline }
 					/>
-					<a href="#">Learn More</a>
+					{ linkURL && linkText && (
+						<a href={ linkURL } className="hp-custom-link" target={ linkTarget } rel={ rel }>{ linkText }</a>
+					) }
 				</div>
 				<img src={ imgSrc } alt={ imgAlt } srcset={ imgSrcset } sizes={ imgSizes } width={ imgWidth } height={ imgHeight } loading="lazy" />
 			</div>

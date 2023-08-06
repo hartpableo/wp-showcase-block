@@ -19,5 +19,8 @@
 		"@wordpress/components": "^25.4.0",
 		"@wordpress/icons": "^9.29.0",
 		"@wordpress/scripts": "^26.9.0"
+	},
+	"dependencies": {
+		"@10up/block-components": "^1.15.13"
 	}
 }
